@@ -1,22 +1,22 @@
 import React from 'react';
-import { AppRegistry, StatusBar } from 'react-native';
-import Home from './src/pages/Home/index'
+import {AppRegistry, StatusBar} from 'react-native';
+import Home from './src/pages/Home/index';
 import {name as appName} from './app.json';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
-export default function App(){
-  return(
+export default function App() {
+  return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#2398F7" />
       <Home style={styles.font} />
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   font: {
-    fontFamily: 'Roboto'
-  }
-})
+    fontFamily: 'Roboto',
+  },
+});
 
 AppRegistry.registerComponent(appName, () => App);
