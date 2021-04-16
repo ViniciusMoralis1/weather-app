@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import api from '../../services/api';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import styles from './styles';
@@ -7,8 +8,12 @@ import styles from './styles';
 export default function Home() {
   const [city, setCity] = useState('');
 
-  function navigate() {
-    console.log(city);
+  async function handleCitySearch() {
+    await api
+      .get('/forecast?id=524901&appid=8e7de8b2ee9d792ab8dad643d67bf00a')
+      .then(response => {
+        console.log('response ' + JSON.stringify(response.data));
+      });
   }
 
   return (
@@ -30,7 +35,7 @@ export default function Home() {
       <TouchableOpacity
         style={styles.continueButton}
         activeOpacity={0.7}
-        onPress={navigate}>
+        onPress={handleCitySearch}>
         <Text style={styles.continueText}>Continuar</Text>
         <Icon name="arrow-forward-ios" color={'#fff'} size={20} />
       </TouchableOpacity>
