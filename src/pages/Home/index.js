@@ -9,11 +9,15 @@ export default function Home() {
   const [city, setCity] = useState('');
 
   async function handleCitySearch() {
-    await api
-      .get('/forecast?id=524901&appid=8e7de8b2ee9d792ab8dad643d67bf00a')
-      .then(response => {
-        console.log('response ' + JSON.stringify(response.data));
-      });
+    if (city) {
+      await api
+        .get(`/forecast?q=${city}&appid=8e7de8b2ee9d792ab8dad643d67bf00a`)
+        .then(response => {
+          console.log('response ' + JSON.stringify(response.data));
+        });
+    } else {
+      console.log('campo de cidade vazio');
+    }
   }
 
   return (
